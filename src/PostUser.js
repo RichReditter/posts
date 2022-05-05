@@ -15,9 +15,9 @@ export default class PostUser extends React.Component {
         return (
             <div className="post-user">
                 <div className="names">
-                    <p><strong>{this.state.firstName}</strong></p>
-                    <p>{this.state.lastName}</p>
-                    <p id="post-user-email"><a href="https://gmail.com">{this.state.email}</a></p>
+                    <p><strong>{this.props.firstName}</strong></p>
+                    <p>{this.props.lastName}</p>
+                    <p id="post-user-email"><a href="https://gmail.com">{this.props.email}</a></p>
                 </div>
                 <div className="avatar">
                     <img src={this.props.avatar} alt ='avatar'></img>

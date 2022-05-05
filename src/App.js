@@ -15,7 +15,8 @@ export default class App extends React.Component {
   }
 
   componentDidMount() {
-    fetch("https://reqres.in/api/users?page=2")
+    this.timerId = setInterval(() =>{
+      fetch("https://reqres.in/api/users?page=2")
       .then((res) => res.json())
       .then(
         (result) => {
@@ -35,6 +36,11 @@ export default class App extends React.Component {
         },
         
       );
+    },1000)
+  }
+  
+  componentWillUnmount() {
+    clearInterval(this.timerId)
   }
   
   changePage(event){
@@ -43,7 +49,6 @@ export default class App extends React.Component {
     });
     console.log(this.state.numberOfUser)
     event.preventDefault()
-    this.componentDidMount()
   }
   
 
@@ -52,7 +57,7 @@ export default class App extends React.Component {
     if (error) {
       return <div>Error: {error.message}</div>;
     } else if (!isLoaded) {
-      return <div class="loader">Loading...</div>;
+      return <div className="loader">Loading...</div>;
     } else {
       return (
         <div id='posts'>
